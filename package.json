@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "tsc && node dist/src/index.js"
+    "build": "tsc -b",
+    "dev:docker": "npx prisma migrate deploy && node dist/src/index.js"
   },
   "keywords": [],
   "type": "module",
