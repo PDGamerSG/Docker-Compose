@@ -1,4 +1,4 @@
-FROM node:30-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -9,10 +9,7 @@ RUN npm install
 
 COPY . .
 
-ENV DATABASE_URL= postgresql://postgres:mysecretpassword@localhost:5432/postgress
-
-RUN npx prisma migrate dev
 RUN npx prisma generate
 RUN npm run build
 
-CMD ["npm","start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]
